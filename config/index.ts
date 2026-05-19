@@ -1,4 +1,5 @@
 import { defineConfig, type UserConfigExport } from '@tarojs/cli'
+import { UnifiedWebpackPluginV5 } from 'weapp-tailwindcss/webpack'
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
 import path from 'node:path'
 import devConfig from './dev'
@@ -34,9 +35,7 @@ export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
     cache: {
       enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
     },
-    // ======================
-    // 🔥 @ 路径别名（Taro 用）
-    // ======================
+    // 路径别名（Taro 用）
     alias: {
       '@': path.resolve(__dirname, '../src'),
     },
@@ -60,10 +59,25 @@ export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
         // TS 路径解析
         chain.resolve.plugin('tsconfig-paths').use(TsconfigPathsPlugin)
 
-        // ======================
-        // 🔥 @ 路径别名（Webpack 用）
-        // ======================
+        // @ 路径别名（Webpack 用）
         chain.resolve.alias.set('@', path.resolve(__dirname, '../src'))
+
+        // TailwindCSS 小程序适配
+        chain.merge({
+          plugin: {
+            install: {
+              plugin: UnifiedWebpackPluginV5,
+              args: [{
+                // 这里可以传参数
+                rem2rpx: true,
+                cssEntries: [
+                  // 你 @import "weapp-tailwindcss/index.css"; 那个文件绝对路径
+                  path.resolve(__dirname, '../src/app.scss'),
+                ],
+              }],
+            },
+          },
+        })
       }
     },
     h5: {
