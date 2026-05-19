@@ -1,6 +1,5 @@
 export default definePageConfig({
-  navigationBarTitleText: '个人主页',
-  disableScroll: true, // 禁止页面滚动
+  navigationBarTitleText: '首页',
   enableShareAppMessage: true,
   enableShareTimeline: true,
 })

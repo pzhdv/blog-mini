@@ -1,6 +1,6 @@
 export default defineAppConfig({
   pages: [
-    'pages/home/index',
+    'pages/index/index',
     'pages/category/index',
     'pages/author/index',
     'pages/detail/index',
@@ -11,6 +11,7 @@ export default defineAppConfig({
     navigationBarTitleText: '晖途博文',
     navigationBarTextStyle: 'black'
   },
+  "lazyCodeLoading": "requiredComponents",
   // 全局配置文件
   tabBar: {
     // custom: true, // 使用自定义custom-tab-bar
@@ -21,7 +22,7 @@ export default defineAppConfig({
     list: [
       {
         text: '首页',
-        pagePath: 'pages/home/index', // 路由
+        pagePath: 'pages/index/index', // 路由
         iconPath: 'assets/images/home.png',
         selectedIconPath: 'assets/images/home_active.png',
       },

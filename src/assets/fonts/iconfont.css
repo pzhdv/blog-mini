@@ -6,6 +6,10 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+.icon-riqi:before {
+  content: "\e644";
+}
+
 .icon-zhankai:before {
   content: "\e600";
 }
