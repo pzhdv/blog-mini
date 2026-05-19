@@ -17,9 +17,9 @@
     "jsx": "react-jsx",
     "allowJs": true,
     "resolveJsonModule": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ],
+    "typeRoots": ["node_modules/@types"],
+    "ignoreDeprecations": "6.0",
+    "baseUrl": ".",
     "paths": {
       // TS5090 leading './'
       "@/*": ["./src/*"]

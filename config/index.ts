@@ -1,5 +1,6 @@
 import { defineConfig, type UserConfigExport } from '@tarojs/cli'
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
+import path from 'node:path'
 import devConfig from './dev'
 import prodConfig from './prod'
 
@@ -33,6 +34,12 @@ export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
     cache: {
       enable: false // Webpack 持久化缓存配置，建议开启。默认配置请参考：https://docs.taro.zone/docs/config-detail#cache
     },
+    // ======================
+    // 🔥 @ 路径别名（Taro 用）
+    // ======================
+    alias: {
+      '@': path.resolve(__dirname, '../src'),
+    },
     mini: {
       postcss: {
         pxtransform: {
@@ -50,7 +57,13 @@ export default defineConfig<'webpack5'>(async (merge, { command, mode }) => {
         }
       },
       webpackChain(chain) {
+        // TS 路径解析
         chain.resolve.plugin('tsconfig-paths').use(TsconfigPathsPlugin)
+
+        // ======================
+        // 🔥 @ 路径别名（Webpack 用）
+        // ======================
+        chain.resolve.alias.set('@', path.resolve(__dirname, '../src'))
       }
     },
     h5: {
