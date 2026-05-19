@@ -70,6 +70,7 @@
     "@tarojs/runtime": "4.2.0",
     "@tarojs/shared": "4.2.0",
     "@tarojs/taro": "4.2.0",
+    "qs": "^6.15.2",
     "react": "^18.0.0",
     "react-dom": "^18.0.0"
   },
@@ -87,6 +88,7 @@
     "@tarojs/webpack5-runner": "4.2.0",
     "@types/minimatch": "^5",
     "@types/node": "^18",
+    "@types/qs": "^6.15.1",
     "@types/react": "^18.0.0",
     "@types/webpack-env": "^1.13.6",
     "babel-preset-taro": "4.2.0",

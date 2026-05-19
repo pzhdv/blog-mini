@@ -33,6 +33,6 @@ module.exports = {
   allowCustomScopes: true, // 是否允许用户输入自定义的作用域
   defaultScopes: ['core', 'ui', 'api', 'test'], // 默认允许的作用域列表
   allowBreakingChanges: ['feat', 'fix', 'ui', 'hotfix', 'update', 'perf'], // 注意：这里使用去除emoji后的value值
-  skipQuestions: ['body'], // 跳过的问题，这里跳过了详细描述（body）
+  skipQuestions: ['body', 'scope'], // 跳过的问题，这里跳过了详细描述（body）
   subjectLimit: 100, // 提交主题的最大长度限制
 }
